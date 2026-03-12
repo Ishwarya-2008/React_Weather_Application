@@ -13,6 +13,16 @@ export default function App() {
   const [forecast, setForecast] = useState(null);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    if (!error) return;
+
+    const timer = setTimeout(() => {
+      setError("");
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, [error]);
+
   const searchWeather = async () => {
     const searchCity = inputCity.trim();
     if (!searchCity) return;
@@ -26,8 +36,6 @@ export default function App() {
       setCity(searchCity);
     } catch (err) {
       setError(err.message);
-      setCurrent(null);
-      setForecast(null);
     }
   };
 
@@ -35,16 +43,14 @@ export default function App() {
     searchWeather();
   }, []);
 
-  if (error) {
-    return <p className="error">{error}</p>;
-  }
-
   if (!current || !forecast) {
     return null;
   }
 
   return (
     <div className="app">
+      {error && <div className="error-toast">{error}</div>}
+
       <header className="app-header">
         <div className="location">{city}{current && current.sys?.country ? `, ${current.sys.country}` : ''}</div>
         <div className="header-right">
