@@ -357,9 +357,18 @@ body {
 #forecast-icon{
     width: 100px;
 }
-@media (max-width: 1000px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .app {
-        width: 94%;
+        width: 92%;
+        margin: 20px auto;
+        margin-left: auto;
+        padding: 22px;
+    }
+
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
 
     .top-section {
@@ -367,7 +376,7 @@ body {
     }
 
     .hourly {
-        margin-top: 18px;
+        margin-top: 16px;
     }
 
     .daily {
@@ -376,30 +385,82 @@ body {
 
     .card.current {
         min-height: 260px;
-        flex-direction: row;
+        padding: 24px;
+    }
+
+    .card.current h1 {
+        font-size: 72px;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
+    .app {
+        width: 95%;
+        margin: 14px auto;
+        margin-left: auto;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .app-header .location {
+        font-size: 22px;
+    }
+
+    .app-header .datetime {
+        font-size: 14px;
+    }
+
     .search-bar {
         flex-direction: column;
+        gap: 10px;
     }
 
     .search-bar button {
         width: 100%;
     }
 
+    .top-section {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
     .card.current {
         flex-direction: column;
         align-items: center;
-        min-height: 260px;
+        min-height: 240px;
+        padding: 20px;
+        text-align: center;
     }
 
     .card.current h1 {
         font-size: 56px;
     }
 
+    .card.current .current-text {
+        margin-left: 0;
+    }
+
+    .meta {
+        align-items: center;
+        min-width: auto;
+    }
+
     .daily {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .error-toast {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        font-size: 13px;
+        text-align: center;
     }
 }
